@@ -54,12 +54,12 @@ def predict():
     
     # Logging the input payload
     json_payload = request.json
-    LOG.info(f"JSON payload: \n{json_payload}")
+    LOG.info("JSON payload: %s json_payload")
     inference_payload = pd.DataFrame(json_payload)
-    LOG.info(f"Inference payload DataFrame: \n{inference_payload}")
+    LOG.info("Inference payload DataFrame: %s inference_payload")
     scaled_payload = scale(inference_payload)
     prediction = list(clf.predict(scaled_payload))
-    LOG.info(f"Prediction value: \n{prediction}")
+    LOG.info("Prediction value: %s prediction")
     return jsonify({'prediction': prediction})
 
 
