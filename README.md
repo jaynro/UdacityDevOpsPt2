@@ -2,11 +2,11 @@
 
 This project demonstrates how to implement continuous delivery for a Python-based machine learning application using the Flask web framework with a ML Microservice using Azure DevOps for pipelines, GitHub, and GitHub Actions.
 
-The Machine Learning Microservice has a a pre-trained, sklearn model that has been trained to predict housing prices in Boston according to several features, such as average rooms in a home and data about highway access, teacher-to-pupil ratios, and so on.
+The Machine Learning Microservice has a a pre-trained, sklearn model that has been trained to predict housing prices in Boston according to several features, such as average rooms in a home and data about highway access, teacher-to-pupil ratios, etc.
 
 
 ## Project Plan
-* [A Link to Udacity DevOPS](https://dev.azure.com/jaynronet/UdacityDevOps/_build)
+* [A Link to the pipelines in Azure DevOPS ](https://dev.azure.com/jaynronet/UdacityDevOps/_build)
 * [A link to a Trello board for the project](https://trello.com/b/b4q2mXEd/udacity-devops)
 * [A link to a spreadsheet that includes the original and final project plan]( https://docs.google.com/spreadsheets/d/1rCIJf5hgukItnmcKnGyO6SWcahsT8PYWb-IimWXLv8g/edit#gid=1348135932)
 
@@ -15,18 +15,18 @@ The Machine Learning Microservice has a a pre-trained, sklearn model that has be
 ## Instructions
 
  
-* Architectural Diagram (Shows how key parts of the system work)
+### Architectural Diagram 
 
 ![Screenshot](screenshots/architecture.png)
 
 
 ### Run the Flask ML Service in cloud shell
 
-The following steps describe the needed instructions to run this project in the Azure cloud shell :
+The following steps describe the needed instructions to run this project in Azure cloud shell:
 
 1. Login into Azure Portal & open the cloud shell.
 2. Add the SSH keys on GitHub from cloud shell run.
-``` ssh-keygen -t ed25519 -C "<your_email_address>@example.com" ```
+``` ssh-keygen -t ed25519 -C "<your_email_address>@example.com" ```.
 3. Go to Github settings -> Add SSH and paste the content generated from above step.
 4. Clone the repo using git clone: 
 
@@ -40,12 +40,12 @@ source venv/bin/activate
 
 6. Go to the code inside the repo and run the command ``` make install ```- to install requirements
  * Additionally, you can run the make command with the following arguments:
-   * Run the command ``` make lint ```- to validate code has no  errors
-   * Run the command ``` make test ``` - to run tests 
-   * Run the command ``` make all ``` to execute all above  
+   * Run the command ``` make lint ```- to validate code has no  errors.
+   * Run the command ``` make test ``` - to run tests.
+   * Run the command ``` make all ``` to execute all above.
     ![Screenshot](screenshots/pytests.png)
     
-7. Run ``` python3 app.py ``` command to start the flask application
+7. Run ``` python3 app.py ``` command to start the flask application.
 8. To serve out a prediction,  open another cloud shell session, and then run ``` .\make_predisction.sh ```
 ![Screenshot](screenshots/predicitionLocal.png)
  Note: Make sure you have the necesary admin rights to execute this file.
@@ -56,15 +56,16 @@ source venv/bin/activate
 2. Deploy the azure web app using  command ``` az webapp up -n flaskpt2 ```.
 3. Edit the file make_predict_azure_app.sh with the webapp name you provided above and save the file.
  Note: Make sure you have the necesary admin rights to edit and execute this file.
-4. Run ``` ./make_predict_azure_app.sh ``` to servout a prediction result from the Azure WebApp
+4. Run ``` ./make_predict_azure_app.sh ``` to servout a prediction result from the Azure WebApp.
 ![Screenshot](screenshots/predicitionLocal.png)
  
 5. There are 2 ways to check the logs:
    - Running thr  command ``` az webapp log tail ``` in the cloud shell.
-   - Openning this URL  https://flaskpt2.scm.azurewebsites.net/api/logs/docker on any browsers
+   - Openning this URL  https://flaskpt2.scm.azurewebsites.net/api/logs/docker on any browsers.
+
 
 ### Using Github Actions for CI
-1. Enable Github Actions and create a new workflow
+1. Enable Github Actions and create a new workflow.
 ![Screenshot](screenshots/GitHubActionNew.png)
 2. Update the YML file with below code:
 ```
@@ -100,9 +101,9 @@ jobs:
 
 ### Using Azure Pipelines for CD
 1. Create a project in Azure DevOps.
-2. Go to the Project settings and create a  new service connection with your subscription.
+2. Create a new service connection with your subscription in Project settings.
 3. Go to the pipelines of the project and create a new pipeline.
-4. Select the repository for your code.
+4. Select the repository.
 5. Authorize GitHub to use the repository.
 6. Select "Python web app for Linux".
 7. Add a section on the YAML for lint and test dependencies.
