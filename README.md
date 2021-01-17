@@ -99,13 +99,13 @@ jobs:
 
 
 ### Using Azure Pipelines for CD
-1. Create project in Azure DevOps
-2. Go to Project settings and create new service connections with selected subscription
-3. Go to pipelines of project and create new pipelines
-4. Select the repo for your code,
-6. Authorize GitHub to use the repo
-7. Select "Python web app for Linux"
-8. Edit pipelines for lint and test (you can also use make all install of these three make lines
+1. Create a project in Azure DevOps.
+2. Go to the Project settings and create a  new service connection with your subscription.
+3. Go to the pipelines of the project and create a new pipeline.
+4. Select the repository for your code.
+5. Authorize GitHub to use the repository.
+6. Select "Python web app for Linux".
+7. Add a section on the YAML for lint and test dependencies.
 ```
     - script: |
         python -m venv antenv
@@ -116,8 +116,7 @@ jobs:
       workingDirectory: $(projectRoot)
       displayName: "Install, lint and Test"
 ```
-9. Save and Run YAML
-10. Once successful you will see the results like this
+8. Run the YAML file.
 ![Screenshot](screenshots/AzurePipeline.png)
 
 
