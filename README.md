@@ -20,38 +20,106 @@ The Machine Learning Microservice has a a pre-trained, sklearn model that has be
 ![Screenshot](screenshots/architecture.png)
 
 
+### Run the Flask ML Service in cloud shell
 
+The following steps describe the needed instructions to run this project in the Azure cloud shell :
 
- Instructions for running the Python project.  How could a user with no context run this project without asking you for any help.  Include screenshots with explicit steps to create that work. Be sure to at least include the following screenshots:
+1. Login into Azure Portal & open the cloud shell.
+2. Add the SSH keys on GitHub from cloud shell run.
+``` ssh-keygen -t ed25519 -C "<your_email_address>@example.com" ```
+3. Go to Github settings -> Add SSH and paste the content generated from above step.
+4. Clone the repo using git clone: 
 
-* Project running on Azure App Service
+![Screenshot](screenshots/ClonningGitHubRepo.png "Project cloned into Azure Cloud Shell")
 
-* Project cloned into Azure Cloud Shell
-![Screenshot](screenshots/ClonningGitHubRepo.png)
-
-* Passing tests that are displayed after running the `make all` command from the `Makefile`
-
-* Output of a test run
-![Screenshot](screenshots/pytests.png)
-
-* Successful deploy of the project in Azure Pipelines.  [Note the official documentation should be referred to and double checked as you setup CI/CD](https://docs.microsoft.com/en-us/azure/devops/pipelines/ecosystems/python-webapp?view=azure-devops).
-
-
-* Running Azure App Service from Azure Pipelines automatic deployment
-![Screenshot](screenshots/AzurePipeline.png)
-
-* Successful prediction from deployed flask app in Azure Cloud Shell.  [Use this file as a template for the deployed prediction](https://github.com/udacity/nd082-Azure-Cloud-DevOps-Starter-Code/blob/master/C2-AgileDevelopmentwithAzure/project/starter_files/flask-sklearn/make_predict_azure_app.sh).
-The output should look similar to this:
-
-```bash
-udacity@Azure:~$ ./make_predict_azure_app.sh
-Port: 443
-{"prediction":[20.35373177134412]}
+5.Run bellow  commands in the cloud shell to setup and source a Python  virtual environment:
+```
+python3 -m venv venv
+source venv/bin/activate
 ```
 
-* Output of streamed log files from deployed application
-![Screenshot](screenshots/StreamedLogs.png)
-> 
+6. Go to the code inside the repo and run the command ``` make install ```- to install requirements
+ * Additionally, you can run the make command with the following arguments:
+   * Run the command ``` make lint ```- to validate code has no  errors
+   * Run the command ``` make test ``` - to run tests 
+   * Run the command ``` make all ``` to execute all above  
+    ![Screenshot](screenshots/pytests.png)
+    
+7. Run ``` python3 app.py ``` command to start the flask application
+8. To serve out a prediction,  open another cloud shell session, and then run ``` .\make_predisction.sh ```
+![Screenshot](screenshots/predicitionLocal.png)
+ Note: Make sure you have the necesary admin rights to execute this file.
+
+### Build and deploy the Flask ML Service 
+
+1. Make sure  virtual environment and requiered packages are installed (Step 5 and 6 of the previous sections).
+2. Deploy the azure web app using  command ``` az webapp up -n flaskpt2 ```.
+3. Edit the file make_predict_azure_app.sh with the webapp name you provided above and save the file.
+ Note: Make sure you have the necesary admin rights to edit and execute this file.
+4. Run ``` ./make_predict_azure_app.sh ``` to servout a prediction result from the Azure WebApp
+![Screenshot](screenshots/predicitionLocal.png)
+ 
+5. There are 2 ways to check the logs:
+   - Running thr  command ``` az webapp log tail ``` in the cloud shell.
+   - Openning this URL  https://flaskpt2.scm.azurewebsites.net/api/logs/docker on any browsers
+
+### Using Github Actions for CI
+1. Enable Github Actions and create a new workflow
+![Screenshot](screenshots/GitHubActionNew.png)
+2. Update the YML file with below code:
+```
+name: Python application test with Github Actions
+
+on: [push]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Python 3.5
+      uses: actions/setup-python@v1
+      with:
+        python-version: 3.5
+    - name: Install dependencies
+      run: |
+        make install
+    - name: Lint with pylint
+      run: |
+        make lint
+    - name: Test with pytest
+      run: |
+        make test
+```
+
+3. Push a new commit to validate the build will start automatically:
+![Screenshot](screenshots/BuildList.png)
+
+
+### Using Azure Pipelines for CD
+1. Create project in Azure DevOps
+2. Go to Project settings and create new service connections with selected subscription
+3. Go to pipelines of project and create new pipelines
+4. Select the repo for your code,
+6. Authorize GitHub to use the repo
+7. Select "Python web app for Linux"
+8. Edit pipelines for lint and test (you can also use make all install of these three make lines
+```
+    - script: |
+        python -m venv antenv
+        source antenv/bin/activate
+        make install
+        make lint
+        make test
+      workingDirectory: $(projectRoot)
+      displayName: "Install, lint and Test"
+```
+9. Save and Run YAML
+10. Once successful you will see the results like this
+![Screenshot](screenshots/AzurePipeline.png)
+
 
 ## Enhancements
 
