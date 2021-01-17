@@ -1,17 +1,21 @@
 # Overview
 
-<TODO: complete this with an overview of your project>
+This project demonstrates how to implement continuous delivery for a Python-based machine learning application using the Flask web framework with a ML Microservice using Azure DevOps for pipelines, GitHub, and GitHub Actions.
+
+The Machine Learning Microservice has a a pre-trained, sklearn model that has been trained to predict housing prices in Boston according to several features, such as average rooms in a home and data about highway access, teacher-to-pupil ratios, and so on.
+
 
 ## Project Plan
-<TODO: Project Plan
+* A link to a Trello board for the project: https://trello.com/b/b4q2mXEd/udacity-devops
+* A link to a spreadsheet that includes the original and final project plan: https://docs.google.com/spreadsheets/d/1rCIJf5hgukItnmcKnGyO6SWcahsT8PYWb-IimWXLv8g/edit#gid=1348135932
 
-* A link to a Trello board for the project
-* A link to a spreadsheet that includes the original and final project plan>
 
 ## Instructions
 
-<TODO:  
-* Architectural Diagram (Shows how key parts of the system work)>
+ 
+* Architectural Diagram (Shows how key parts of the system work)
+
+
 
 <TODO:  Instructions for running the Python project.  How could a user with no context run this project without asking you for any help.  Include screenshots with explicit steps to create that work. Be sure to at least include the following screenshots:
 
