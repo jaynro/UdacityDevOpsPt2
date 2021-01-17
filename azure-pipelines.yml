@@ -41,11 +41,11 @@ stages:
     - script: |
         python -m venv antenv
         source antenv/bin/activate
-        python -m pip install --upgrade pip
-        pip install setup
-        pip install -r requirements.txt
+        make install
+        make lint
+        make test
       workingDirectory: $(projectRoot)
-      displayName: "Install requirements"
+      displayName: "Install, lint and Test"
 
     - task: ArchiveFiles@2
       displayName: 'Archive files'
