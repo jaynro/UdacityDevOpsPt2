@@ -127,7 +127,7 @@ jobs:
 This project could be extended to any pre-trained machine learning model, such as those for image recognition and data labeling. Another minot tweak is to use GitHub actions can be used instead of Azure Pipelines for CD.
 
 ## Demo 
+* [A Link to a demo for this project ](https://youtu.be/SsWQTqdAZcQ)
 
-<TODO: Add link Screencast on YouTube>
 
 
