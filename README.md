@@ -55,6 +55,8 @@ source venv/bin/activate
 
 1. Make sure  virtual environment and requiered packages are installed (Step 5 and 6 of the previous sections).
 2. Deploy the azure web app using  command ``` az webapp up -n flaskpt2 ```.
+You can find the deployed web app in the azure portal:
+![Screenshot](screenshots/AzureWebApp.png)
 3. Edit the file make_predict_azure_app.sh with the webapp name you provided above and save the file.
  Note: Make sure you have the necesary admin rights to edit and execute this file.
 4. Run ``` ./make_predict_azure_app.sh ``` to servout a prediction result from the Azure WebApp.
