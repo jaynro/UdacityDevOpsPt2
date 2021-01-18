@@ -8,7 +8,7 @@ The Machine Learning Microservice has a a pre-trained, sklearn model that has be
 ## Project Plan
 * [A Link to the pipelines in Azure DevOPS ](https://dev.azure.com/jaynronet/UdacityDevOps/_build)
 * [A link to a Trello board for the project](https://trello.com/b/b4q2mXEd/udacity-devops)
-* [A link to a spreadsheet that includes the original and final project plan]( https://docs.google.com/spreadsheets/d/1rCIJf5hgukItnmcKnGyO6SWcahsT8PYWb-IimWXLv8g/edit#gid=1348135932)
+* [A link to a spreadsheet that includes the original and final project plan]( https://docs.google.com/spreadsheets/d/e/2PACX-1vQX4v2XIcWUpBg48i6ql5OYm7QDc4UwDTbR8aYG8lV3KYtMF9z6ycMxStwQDvkFIFsvp6dZzeepOp5B/pubhtml)
 
 
 
@@ -58,7 +58,7 @@ source venv/bin/activate
 3. Edit the file make_predict_azure_app.sh with the webapp name you provided above and save the file.
  Note: Make sure you have the necesary admin rights to edit and execute this file.
 4. Run ``` ./make_predict_azure_app.sh ``` to servout a prediction result from the Azure WebApp.
-![Screenshot](screenshots/predicitionLocal.png)
+![Screenshot](screenshots/predicition.png)
  
 5. There are 2 ways to check the logs:
    - Running thr  command ``` az webapp log tail ``` in the cloud shell.
@@ -127,7 +127,7 @@ jobs:
 This project could be extended to any pre-trained machine learning model, such as those for image recognition and data labeling. Another minot tweak is to use GitHub actions can be used instead of Azure Pipelines for CD.
 
 ## Demo 
-* [A Link to a demo for this project ](https://youtu.be/SsWQTqdAZcQ)
+* [A Link to a demo for this project ](https://youtu.be/YCNWMz_MqLE)
 
 
 
