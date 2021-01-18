@@ -47,7 +47,8 @@ source venv/bin/activate
     
 7. Run ``` python3 app.py ``` command to start the flask application.
 8. To serve out a prediction,  open another cloud shell session, and then run ``` .\make_predisction.sh ```
-![Screenshot](screenshots/predicitionLocal.png)
+![Screenshot](screenshots/predictionLocal.png)
+
  Note: Make sure you have the necesary admin rights to execute this file.
 
 ### Build and deploy the Flask ML Service 
