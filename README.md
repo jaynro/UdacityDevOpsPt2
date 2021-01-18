@@ -53,6 +53,7 @@ source venv/bin/activate
 ![Screenshot](screenshots/predictionLocal.png)
 
  Note: Make sure you have the necesary admin rights to execute this file.
+9. You can also run perf
 
 ### Build and deploy the Flask ML Service 
 
@@ -123,8 +124,11 @@ jobs:
       workingDirectory: $(projectRoot)
       displayName: "Install, lint and Test"
 ```
-8. Run the YAML file.
+8. Run the YAML file. Once a pipeline is executed succesfully, you should see below result in Azure DevOps
 ![Screenshot](screenshots/AzurePipeline.png)
+9. Serve out a prediction again to validate the pipeline is deploying a new version of the code  ``` ./make_predict_azure_app.sh ```
+10. Aditionally, you can run stress testing running the locustfile.py 
+![Screenshot](screenshots/locustExec.png)
 
 
 ## Enhancements
